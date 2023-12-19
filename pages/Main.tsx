@@ -1,41 +1,24 @@
 import React from 'react';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import {StyleSheet, SafeAreaView, useWindowDimensions} from 'react-native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
-import Login from './Login';
 import Home from './Home';
+import Gastos from './Gastos';
+import Productos from './Productos';
+import Soporte from './Soporte';
 
 const Main = () => {
-  const layout = useWindowDimensions().height;
-  const Stack = createNativeStackNavigator();
+  const Tab = createBottomTabNavigator();
 
   return (
-    <SafeAreaView style={[styles.container, {height: layout}]}>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{
-            headerShown: false,
-            contentStyle: {backgroundColor: '#fff'},
-          }}
-        />
-        <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{headerShown: false}}
-        />
-      </Stack.Navigator>
-    </SafeAreaView>
+    <Tab.Navigator
+      initialRouteName="Home
+    ">
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Productos" component={Productos} />
+      <Tab.Screen name="Gastos" component={Gastos} />
+      <Tab.Screen name="Soporte" component={Soporte} />
+    </Tab.Navigator>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-  },
-});
 
 export default Main;

@@ -1,14 +1,14 @@
 import React from 'react';
-import {View} from 'react-native';
+import {ScrollView} from 'react-native';
 import Header from '../components/Home/Header';
 import Content from '../components/Home/Content';
 
 const Home = () => {
   return (
-    <View>
+    <ScrollView>
       <Header />
       <Content />
-    </View>
+    </ScrollView>
   );
 };
 
