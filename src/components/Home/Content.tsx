@@ -1,23 +1,25 @@
 import React from 'react';
 import Surface from '../Surface';
 import ActivityButton from '../ActivityButton';
+import {productArray} from '../../data/products';
 import {View, Text, TouchableOpacity, FlatList, StyleSheet} from 'react-native';
 
-const Content = () => {
-  const products = [1, 2, 3];
+const Content = ({navigation}: any) => {
   return (
     <View style={styles.content}>
       <View style={styles.contentHeader}>
         <Text style={styles.contentHeaderText}>Maneja tus productos</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Productos')}>
           <Text style={styles.contentHeaderButton}>Ver todos</Text>
         </TouchableOpacity>
       </View>
       <FlatList
         horizontal
-        data={products}
-        renderItem={() => <Surface />}
+        data={productArray}
         showsHorizontalScrollIndicator={false}
+        renderItem={({item}: any) => (
+          <Surface item={item} productButtons={() => {}} />
+        )}
       />
       <View style={styles.subContent}>
         <Text style={styles.subContentText}>Que quieres hacer?</Text>

@@ -7,7 +7,7 @@ import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 const Login = ({navigation}: any) => {
   return (
     <>
-      <Image style={[styles.image]} source={require('../assets/5.png')} />
+      <Image style={[styles.image]} source={require('../../assets/5.png')} />
       <View style={styles.loginContainer}>
         <View
           style={{

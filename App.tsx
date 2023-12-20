@@ -3,8 +3,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {StyleSheet, SafeAreaView, useWindowDimensions} from 'react-native';
 
-import Login from './pages/Login';
-import Main from './pages/Main';
+import Main from './src/pages/Main';
+import Login from './src/pages/Login';
 
 function App(): React.JSX.Element {
   const layout = useWindowDimensions().height;
