@@ -1,33 +1,37 @@
 import React from 'react';
+import {ScrollView, StyleSheet} from 'react-native';
 import Surface from '../components/Surface';
 import {productArray} from '../data/products';
-import {View, Text, FlatList} from 'react-native';
 import CustomButton from '../components/Buttons/CustomButton';
 
 const Productos = () => {
   const buttons = (props: any) => (
-    <CustomButton {...props} title="uno" onAction={() => console.log(props)} />
+    <CustomButton
+      {...props}
+      primaryTitle={'Movimiento'}
+      secondaryTitle={'Enviar'}
+      onPrimaryAction={() => console.log(props)}
+      onSecondaryAction={() => console.log(props)}
+    />
   );
   return (
-    <View>
-      <View>
-        <Text>Tus Productos</Text>
-      </View>
-      <View>
-        <FlatList
-          data={productArray}
-          renderItem={({item}: any) => (
-            <Surface
-              item={item}
-              margin={20}
-              width="90%"
-              productButtons={(props: any) => buttons(props)}
-            />
-          )}
+    <ScrollView contentContainerStyle={styles.contentStyles}>
+      {productArray.map(item => (
+        <Surface
+          item={item}
+          width={'95%'}
+          productButtons={() => buttons(item)}
         />
-      </View>
-    </View>
+      ))}
+    </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  contentStyles: {
+    alignItems: 'center',
+    backgroundColor: '#fff',
+  },
+});
 
 export default Productos;

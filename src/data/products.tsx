@@ -5,6 +5,7 @@ export const productArray = [
     productName: 'Tarjeta de credito',
     productNumber: 1234567890123456,
     productAmount: 987654,
+    cardCap: 1000000,
     available: true,
   },
   {
@@ -20,7 +21,7 @@ export const productArray = [
     type: 3,
     productName: 'Prestamo',
     productNumber: 1111222233334444,
-    productAmount: 159753,
+    productAmount: 456789,
     available: true,
   },
   {
@@ -28,7 +29,7 @@ export const productArray = [
     type: 3,
     productName: 'Prestamo',
     productNumber: 1111222233334444,
-    productAmount: 159753,
+    productAmount: 543689,
     available: true,
   },
   {
@@ -36,7 +37,7 @@ export const productArray = [
     type: 3,
     productName: 'Prestamo',
     productNumber: 1111222233334444,
-    productAmount: 159753,
+    productAmount: 245678,
     available: true,
   },
   {
@@ -44,23 +45,23 @@ export const productArray = [
     type: 3,
     productName: 'Prestamo',
     productNumber: 1111222233334444,
-    productAmount: 159753,
+    productAmount: 853246,
     available: true,
   },
   {
     id: 7,
     type: 3,
-    productName: 'Prestamo',
+    productName: '7',
     productNumber: 1111222233334444,
-    productAmount: 159753,
+    productAmount: 127908,
     available: true,
   },
   {
     id: 8,
     type: 3,
-    productName: 'dsdsds',
+    productName: '8',
     productNumber: 1111222233334444,
-    productAmount: 159753,
+    productAmount: 912567,
     available: true,
   },
 ];

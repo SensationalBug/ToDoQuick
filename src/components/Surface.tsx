@@ -1,9 +1,12 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import CustomProgressBar from './CustomProgressBar';
+import {formatter} from '../calcs/formatter';
 
 interface productInfo {
   type: number;
+  cardCap?: number;
   available: boolean;
   productName: string;
   productNumber: number;
@@ -19,6 +22,7 @@ const Surface = ({
 }: any) => {
   const {
     type,
+    cardCap,
     available,
     productName,
     productNumber,
@@ -33,10 +37,6 @@ const Surface = ({
       ? 'receipt-outline'
       : '';
 
-  const formatter = new Intl.NumberFormat('es-DO', {
-    style: 'currency',
-    currency: 'DOP',
-  });
   return (
     <View
       style={[
@@ -68,6 +68,7 @@ const Surface = ({
           {formatter.format(productAmount)}
         </Text>
       </View>
+      <CustomProgressBar productAmount={productAmount} cardCap={cardCap} />
       {productButtons(productButtonsProps)}
     </View>
   );
@@ -75,10 +76,11 @@ const Surface = ({
 
 const styles = StyleSheet.create({
   surfaceContainer: {
-    height: 150,
     elevation: 7,
     borderRadius: 15,
+    paddingVertical: 10,
     alignItems: 'center',
+    marginHorizontal: 10,
     backgroundColor: '#fff',
     justifyContent: 'space-evenly',
   },

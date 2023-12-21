@@ -32,7 +32,17 @@ const Main = () => {
         tabBarActiveTintColor: '#0082cd',
       })}>
       <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Productos" component={Productos} />
+      <Tab.Screen
+        name="Productos"
+        component={Productos}
+        options={{
+          headerShown: true,
+          headerStatusBarHeight: 30,
+          headerTitle: 'Tus productos',
+          headerTitleStyle: {color: '#00294f'},
+          // headerStyle={}
+        }}
+      />
       <Tab.Screen name="Gastos" component={Gastos} />
       <Tab.Screen name="Soporte" component={Soporte} />
     </Tab.Navigator>
