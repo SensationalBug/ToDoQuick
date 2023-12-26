@@ -8,7 +8,7 @@ const Productos = () => {
   const buttons = (props: any) => (
     <CustomButton
       {...props}
-      primaryTitle={'Movimiento'}
+      primaryTitle={'Movimientos'}
       secondaryTitle={'Enviar'}
       onPrimaryAction={() => console.log(props)}
       onSecondaryAction={() => console.log(props)}

@@ -26,9 +26,10 @@ const CustomButton = ({
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    width: '100%',
+    width: '80%',
+    paddingVertical: 10,
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-between',
   },
   buttonStyles: {
     width: '40%',

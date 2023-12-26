@@ -1,13 +1,17 @@
-import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import CustomProgressBar from './CustomProgressBar';
+import React, {useState} from 'react';
 import {formatter} from '../calcs/formatter';
+import {useRoute} from '@react-navigation/native';
+import CustomProgressBar from './CustomProgressBar';
+import Icon from 'react-native-vector-icons/Ionicons';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 interface productInfo {
+  id: number;
+  due: number;
   type: number;
   cardCap?: number;
   available: boolean;
+  paymentDate?: string;
   productName: string;
   productNumber: number;
   productAmount: number;
@@ -21,9 +25,12 @@ const Surface = ({
   ...productButtonsProps
 }: any) => {
   const {
+    id,
+    due,
     type,
     cardCap,
     available,
+    paymentDate,
     productName,
     productNumber,
     productAmount,
@@ -36,20 +43,34 @@ const Surface = ({
       : type === 3
       ? 'receipt-outline'
       : '';
-
+  const route = useRoute().name;
+  const [show, setShow] = useState(false);
   return (
     <View
+      key={id}
       style={[
         styles.surfaceContainer,
         {margin: margin || 10, width: width || 280},
       ]}>
       <View style={styles.textContainer}>
         <View style={styles.text}>
-          <Icon size={20} color={'#000'} style={styles.icon} name={iconName} />
-          <Text style={styles.surfaceContainerText}>{productName}:</Text>
-          <Text style={styles.surfaceContainerSubTitle}>
-            *{Array.from(productNumber.toString()).splice(12, 4).join('')}
-          </Text>
+          <View style={styles.textTitle}>
+            <Icon
+              size={20}
+              color={'#000'}
+              name={iconName}
+              style={styles.icon}
+            />
+            <Text style={styles.surfaceContainerText}>{productName}:</Text>
+            <Text style={styles.surfaceContainerSubTitle}>
+              *{Array.from(productNumber.toString()).splice(12, 4).join('')}
+            </Text>
+          </View>
+          {type === 3 && route === 'Productos' ? (
+            <TouchableOpacity onPress={() => setShow(!show)}>
+              <Icon name="chevron-down" size={25} color={'#000'} />
+            </TouchableOpacity>
+          ) : null}
         </View>
         <Text
           style={[
@@ -68,8 +89,39 @@ const Surface = ({
           {formatter.format(productAmount)}
         </Text>
       </View>
-      <CustomProgressBar productAmount={productAmount} cardCap={cardCap} />
-      {productButtons(productButtonsProps)}
+      {cardCap && route === 'Productos' ? (
+        <CustomProgressBar productAmount={productAmount} cardCap={cardCap} />
+      ) : null}
+      {type !== 3 ? productButtons(productButtonsProps) : null}
+      {route === 'Productos' && show ? (
+        <View>
+          {type === 3 ? (
+            <View style={styles.hiddenInfo}>
+              <View>
+                <Text style={styles.surfaceContainerText}>Proxima cuota:</Text>
+                <Text
+                  style={[
+                    styles.surfaceContainerSubTitle,
+                    styles.surfaceContainerAmountText,
+                  ]}>
+                  {formatter.format(due)}
+                </Text>
+              </View>
+              <View style={styles.paymentDate}>
+                <Text style={styles.surfaceContainerText}>Fecha de pago:</Text>
+                <Text
+                  style={[
+                    styles.surfaceContainerSubTitle,
+                    styles.surfaceContainerAmountText,
+                  ]}>
+                  {paymentDate}
+                </Text>
+              </View>
+            </View>
+          ) : null}
+          {productButtons(productButtonsProps)}
+        </View>
+      ) : null}
     </View>
   );
 };
@@ -77,6 +129,7 @@ const Surface = ({
 const styles = StyleSheet.create({
   surfaceContainer: {
     elevation: 7,
+    minHeight: 150,
     borderRadius: 15,
     paddingVertical: 10,
     alignItems: 'center',
@@ -88,7 +141,16 @@ const styles = StyleSheet.create({
     width: '80%',
     alignItems: 'flex-start',
   },
-  text: {flexDirection: 'row'},
+  text: {
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  textTitle: {
+    width: '90%',
+    flexDirection: 'row',
+  },
   icon: {marginRight: 10},
   surfaceContainerText: {
     fontSize: 18,
@@ -101,7 +163,14 @@ const styles = StyleSheet.create({
     marginLeft: 5,
   },
   surfaceContainerSubText: {fontSize: 14},
-  surfaceContainerAmountText: {fontSize: 20},
+  surfaceContainerAmountText: {fontSize: 20, marginVertical: 5},
+  hiddenInfo: {flexDirection: 'row'},
+  paymentDate: {
+    borderLeftColor: '#ddd',
+    borderLeftWidth: 1,
+    paddingHorizontal: 25,
+    marginHorizontal: 25,
+  },
 });
 
 export default Surface;
