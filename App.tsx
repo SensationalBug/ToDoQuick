@@ -5,6 +5,7 @@ import {StyleSheet, SafeAreaView, useWindowDimensions} from 'react-native';
 
 import Main from './src/pages/Main';
 import Login from './src/pages/Login';
+import CardInfo from './src/pages/subPages/CardInfo';
 
 function App(): React.JSX.Element {
   const layout = useWindowDimensions().height;
@@ -12,7 +13,7 @@ function App(): React.JSX.Element {
   return (
     <NavigationContainer>
       <SafeAreaView style={[styles.container, {height: layout}]}>
-        <Stack.Navigator initialRouteName="Main">
+        <Stack.Navigator initialRouteName="CardInfo">
           <Stack.Screen
             name="Login"
             component={Login}
@@ -25,6 +26,14 @@ function App(): React.JSX.Element {
             name="Main"
             component={Main}
             options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="CardInfo"
+            component={CardInfo}
+            options={{
+              headerTitle: 'PEDROQIK',
+              headerTitleAlign: 'center',
+            }}
           />
         </Stack.Navigator>
       </SafeAreaView>

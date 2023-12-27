@@ -107,7 +107,7 @@ const Surface = ({
                   {formatter.format(due)}
                 </Text>
               </View>
-              <View style={styles.paymentDate}>
+              <View>
                 <Text style={styles.surfaceContainerText}>Fecha de pago:</Text>
                 <Text
                   style={[
@@ -164,12 +164,9 @@ const styles = StyleSheet.create({
   },
   surfaceContainerSubText: {fontSize: 14},
   surfaceContainerAmountText: {fontSize: 20, marginVertical: 5},
-  hiddenInfo: {flexDirection: 'row'},
-  paymentDate: {
-    borderLeftColor: '#ddd',
-    borderLeftWidth: 1,
-    paddingHorizontal: 25,
-    marginHorizontal: 25,
+  hiddenInfo: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });
 

@@ -24,10 +24,22 @@ const Content = ({navigation}: any) => {
       <View style={styles.subContent}>
         <Text style={styles.subContentText}>Que quieres hacer?</Text>
         <View style={styles.subContentButtons}>
-          <ActivityButton icon="eye" title="Ver numero de tarjeta" />
-          <ActivityButton icon="dollar-sign" title="Pagar tarjeta" />
-          <ActivityButton icon="file-text" title="Pago de servicios" />
-          <ActivityButton icon="grid" title="Ver mas" />
+          <ActivityButton
+            to={'CardInfo'}
+            icon="eye"
+            title="Ver numero de tarjeta"
+          />
+          <ActivityButton
+            to={'CardInfo'}
+            icon="dollar-sign"
+            title="Pagar tarjeta"
+          />
+          <ActivityButton
+            to={'CardInfo'}
+            icon="file-text"
+            title="Pago de servicios"
+          />
+          <ActivityButton to={'CardInfo'} icon="grid" title="Ver mas" />
         </View>
       </View>
       <View style={styles.subContent}>

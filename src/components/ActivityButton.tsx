@@ -1,10 +1,20 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Feather';
 import {TouchableOpacity, Text, StyleSheet} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
-const ActivityButton = ({icon, title}: any) => {
+interface activityButton {
+  icon: string;
+  title: string;
+  to: any;
+}
+
+const ActivityButton = ({icon, title, to}: activityButton) => {
+  const navegar = useNavigation();
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => navegar.navigate(to)}>
       <Icon name={icon} size={15} color={'#17446b'} style={styles.icon} />
       <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>
