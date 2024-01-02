@@ -40,7 +40,6 @@ const Main = () => {
           headerStatusBarHeight: 30,
           headerTitle: 'Tus productos',
           headerTitleStyle: {color: '#00294f'},
-          // headerStyle={}
         }}
       />
       <Tab.Screen name="Gastos" component={Gastos} />

@@ -10,11 +10,11 @@ interface activityButton {
 }
 
 const ActivityButton = ({icon, title, to}: activityButton) => {
-  const navegar = useNavigation();
+  const navigation = useNavigation();
   return (
     <TouchableOpacity
       style={styles.container}
-      onPress={() => navegar.navigate(to)}>
+      onPress={() => navigation.navigate(to)}>
       <Icon name={icon} size={15} color={'#17446b'} style={styles.icon} />
       <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>

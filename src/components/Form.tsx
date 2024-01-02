@@ -7,12 +7,12 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import FingerPrintIcon from 'react-native-vector-icons/MaterialIcons';
-
-const Form = ({navigation}: any) => {
+const Form = () => {
   const [isDisabled, setIsDisabled] = useState(true);
   const [opacity, setOpacity] = useState(0.5);
-
+  const navigation = useNavigation();
   const toggleLoginButton = () => {
     setIsDisabled(!isDisabled);
   };
@@ -45,7 +45,7 @@ const Form = ({navigation}: any) => {
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => navigation.navigate('Main')}
           disabled={isDisabled}
           style={[
             styles.buttonStyle,

@@ -5,7 +5,7 @@ export const productArray = [
     productName: 'Tarjeta de credito',
     productNumber: 1234567890123456,
     paymentDate: null,
-    productAmount: 987654,
+    productAmount: 487654,
     cardCap: 1000000,
     available: true,
     due: null,

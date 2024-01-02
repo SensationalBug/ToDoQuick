@@ -4,7 +4,7 @@ import LogoIcon from 'react-native-vector-icons/AntDesign';
 import ServiceIcon from 'react-native-vector-icons/AntDesign';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 
-const Login = ({navigation}: any) => {
+const Login = () => {
   return (
     <>
       <Image style={[styles.image]} source={require('../../assets/5.png')} />
@@ -24,7 +24,7 @@ const Login = ({navigation}: any) => {
           </View>
         </View>
         <View style={styles.formContainer}>
-          <Form navigation={navigation} />
+          <Form />
         </View>
         <View style={styles.footer}>
           <Text style={styles.footerText}>Entidad Autorizada</Text>

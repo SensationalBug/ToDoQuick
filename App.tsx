@@ -13,7 +13,7 @@ function App(): React.JSX.Element {
   return (
     <NavigationContainer>
       <SafeAreaView style={[styles.container, {height: layout}]}>
-        <Stack.Navigator initialRouteName="CardInfo">
+        <Stack.Navigator initialRouteName="Login">
           <Stack.Screen
             name="Login"
             component={Login}
@@ -31,7 +31,7 @@ function App(): React.JSX.Element {
             name="CardInfo"
             component={CardInfo}
             options={{
-              headerTitle: 'PEDROQIK',
+              headerTitle: 'QIK',
               headerTitleAlign: 'center',
             }}
           />
