@@ -7,14 +7,15 @@ interface activityButton {
   icon: string;
   title: string;
   to: any;
+  params?: {};
 }
 
-const ActivityButton = ({icon, title, to}: activityButton) => {
+const ActivityButton = ({icon, title, to, params}: activityButton) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
       style={styles.container}
-      onPress={() => navigation.navigate(to)}>
+      onPress={() => navigation.navigate(to, params)}>
       <Icon name={icon} size={15} color={'#17446b'} style={styles.icon} />
       <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>

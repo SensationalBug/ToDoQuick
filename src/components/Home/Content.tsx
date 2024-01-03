@@ -2,9 +2,10 @@ import React from 'react';
 import Surface from '../Surface';
 import ActivityButton from '../ActivityButton';
 import {productArray} from '../../data/products';
+import {useNavigation} from '@react-navigation/native';
 import {View, Text, TouchableOpacity, FlatList, StyleSheet} from 'react-native';
-
-const Content = ({navigation}: any) => {
+const Content = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.content}>
       <View style={styles.contentHeader}>
@@ -30,9 +31,10 @@ const Content = ({navigation}: any) => {
             title="Ver numero de tarjeta"
           />
           <ActivityButton
-            to={'CardInfo'}
+            to={'PayCard'}
             icon="dollar-sign"
             title="Pagar tarjeta"
+            params={productArray}
           />
           <ActivityButton
             to={'CardInfo'}

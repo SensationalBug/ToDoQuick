@@ -1,7 +1,7 @@
 import React from 'react';
-import {ScrollView, StyleSheet} from 'react-native';
 import Surface from '../components/Surface';
 import {productArray} from '../data/products';
+import {ScrollView, StyleSheet} from 'react-native';
 import CustomButton from '../components/Buttons/CustomButton';
 
 const Productos = () => {
